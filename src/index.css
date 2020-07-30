@@ -1,10 +1,13 @@
 .app__body{
+    flex-direction: column;
     padding-top: 20px;
     background-color: #e6ebe7;
     height: 100%;
 }
 
 .app__header{
+    display: flex;
+    align-items: center;
     background-color: white;
     object-fit: contain;
     position: sticky 0px;
@@ -16,19 +19,30 @@
 }
 
 .post{
-    width:100%;
-    border:solid lightgrey 1px;
+    border:solid lightgrey 2px;
+    margin: 0px 10px;
     background-color: white;
     margin-bottom: 15px;
+    max-width:500px;
 }
 
 .post__header{
     display: flex;
     align-items: center;
+    padding-top:5px;
 }
 
 .post__image{
     width:100%;
     object-fit: contain;
-    max-width: 500px;
+}
+
+.post__footer{
+    padding:10px;
+    text-align: center;
+}
+
+.app__signup__modal{
+    display: flex;
+    flex-direction: column;
 }
