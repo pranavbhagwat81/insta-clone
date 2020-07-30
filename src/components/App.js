@@ -11,6 +11,10 @@ function App() {
             </div>
             <div className='app__body'>
                 <Post/>
+                <Post/>
+                <Post/>
+                <Post/>
+                <Post/>
             </div>
         </div>
 

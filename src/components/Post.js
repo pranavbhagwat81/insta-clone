@@ -1,12 +1,19 @@
 import React from 'react'
 import '../index.css'
+import  reactImg  from '../assets/nature.jpg'
+import Avatar from '@material-ui/core/Avatar';
 
 function Post() {
     return (
         <div className='post'>
-            <h3>Model</h3>
+            <div className='post__header'>
+                <h3 style={{margin:'0px 10px'}}>
+                <Avatar alt="Remy Sharp" src="/broken-image.jpg">B</Avatar>
+                </h3>
+                <h3>Model</h3>
+            </div>
             <img className='post__image'
-            src="https://pixabay.com/get/57e2d2474a57aa14f1dc8460da2932771036d8e7505777_640.jpg"
+            src={reactImg}
             alt='post_image'
             />
         </div>
