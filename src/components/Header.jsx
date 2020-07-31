@@ -10,7 +10,7 @@ function renderButtonArea(props){
     if(props.userSignedInStatus){
         return (
             <React.Fragment>
-                <Button onClick={props.onsignOut}>SIGN OUT                 
+                <Button className='signout__btn' onClick={props.onsignOut}>SIGN OUT                 
                     <Avatar 
                         alt={props.activeuser.email} 
                         src="/broken-image.jpg"/>

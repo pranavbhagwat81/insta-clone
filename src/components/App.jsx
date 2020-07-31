@@ -4,6 +4,8 @@ import '../index.css'
 import Post from './Post'
 import {useState,useEffect} from 'react'
 import { db,auth } from '../firebase'
+import FileUploader from './FileUploader'
+import InstagramEmbed from 'react-instagram-embed';
 
 function App() {
 
@@ -16,6 +18,13 @@ function App() {
     const [user,setUser] = useState(null);
 
     useEffect(() => {
+        db.collection('posts').orderBy('timestamp','desc').onSnapshot(snapshot =>{
+            setposts(snapshot.docs.map(doc=>({
+                id:doc.id,
+                post:doc.data()
+            })))
+        })
+        
         const unsubscribe = auth.onAuthStateChanged((authUser) =>{
             if(authUser){
                 console.log(authUser);
@@ -43,12 +52,6 @@ function App() {
           alert(error.message)
         });
       }
-
-    useEffect(() => {
-        db.collection('posts').onSnapshot(snapshot =>{
-            setposts(snapshot.docs.map(doc=>doc.data()))
-        })
-    }, []);
 
     const signOut = (event)=>{
         event.preventDefault();
@@ -85,12 +88,16 @@ function App() {
                 />
             </div>
             <div className='app__body'>
+                <div className="app__posts">
+                <div className="app__left">
                 {
-                    posts.map((post)=>{
+                    posts.map(({id,post})=>{
                         console.log(post);
                         return (
                             <Post
-                                key={post.username} 
+                                key={id}
+                                postId={id} 
+                                user={user}
                                 username={post.username} 
                                 caption={post.caption}
                                 imgUrl={post.imageUrl}
@@ -98,6 +105,37 @@ function App() {
                         )
                     })
                 }
+                </div>
+                <div className="app__right">
+                    <div className='app_embed'>
+                    <InstagramEmbed
+                            url='https://instagr.am/p/Zw9o4/'
+                            maxWidth={320}
+                            hideCaption={false}
+                            containerTagName='div'
+                            protocol=''
+                            injectScript
+                            onLoading={() => {}}
+                            onSuccess={() => {}}
+                            onAfterRender={() => {}}
+                            onFailure={() => {}}
+                            />
+                    </div>
+                </div>
+                </div>
+
+
+            </div>
+                        <div class='file__uploader'>
+               {
+                   (user?.displayName && signedIn) ? (
+                    <FileUploader
+                    username = { user?.displayName}
+                    />
+                   ) : (
+                       <h3>Login to get upload features...</h3>
+                   )
+               }
             </div>
         </div>
 

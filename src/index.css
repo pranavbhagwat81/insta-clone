@@ -6,6 +6,9 @@
 }
 
 .app__header{
+    position:sticky;
+    top:0px;
+    z-index:100;
     display: flex;
     align-items: center;
     background-color: white;
@@ -16,6 +19,10 @@
 
 .app__header__logo{
     padding: 10px;
+}
+
+.app__posts{
+    display:flex;
 }
 
 .post{
@@ -45,4 +52,22 @@
 .app__signup__modal{
     display: flex;
     flex-direction: column;
+}
+
+
+.signout__btn{
+
+}
+
+.post__comments{
+    display: flex;
+}
+
+.post__input{
+    flex:1
+}
+
+
+.post__btn{
+    flex:0
 }

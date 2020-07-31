@@ -1,0 +1,11 @@
+.file__upload{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width:60%;
+    margin:10px auto 10px auto;
+}
+
+.progress__bar{
+    width:100%
+}
