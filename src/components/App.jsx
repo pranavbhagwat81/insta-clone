@@ -5,7 +5,7 @@ import Post from './Post'
 import {useState,useEffect} from 'react'
 import { db,auth } from '../firebase'
 import FileUploader from './FileUploader'
-import InstagramEmbed from 'react-instagram-embed';
+import '../index.css'
 
 function App() {
 
@@ -45,7 +45,7 @@ function App() {
         auth.createUserWithEmailAndPassword(email,password)
         .then((authUser)=>{
             console.log(authUser)
-            //return authUser.user.updateProfile({displayName:userName})
+             authUser.user.updateProfile({displayName:userName})
         })
         .catch((error)=>{
             console.log(error)
@@ -95,6 +95,7 @@ function App() {
                         console.log(post);
                         return (
                             <Post
+                                signedIn = {signedIn}
                                 key={id}
                                 postId={id} 
                                 user={user}
@@ -106,32 +107,17 @@ function App() {
                     })
                 }
                 </div>
-                <div className="app__right">
-                    <div className='app_embed'>
-                    <InstagramEmbed
-                            url='https://instagr.am/p/Zw9o4/'
-                            maxWidth={320}
-                            hideCaption={false}
-                            containerTagName='div'
-                            protocol=''
-                            injectScript
-                            onLoading={() => {}}
-                            onSuccess={() => {}}
-                            onAfterRender={() => {}}
-                            onFailure={() => {}}
-                            />
-                    </div>
-                </div>
+  
                 </div>
 
 
             </div>
-                        <div class='file__uploader'>
+                        <div className='file__uploader'>
                {
-                   (user?.displayName && signedIn) ? (
-                    <FileUploader
-                    username = { user?.displayName}
-                    />
+                   (signedIn) ? (
+                        <FileUploader
+                        username = { user?.displayName}
+                        />      
                    ) : (
                        <h3>Login to get upload features...</h3>
                    )

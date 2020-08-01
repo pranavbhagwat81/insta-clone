@@ -33,6 +33,8 @@ export default function TransitionsModal(props) {
     setOpen(false);
   };
 
+
+
   return (
     <div>
       <Button type="button" onClick={handleOpen}>
@@ -54,6 +56,7 @@ export default function TransitionsModal(props) {
           <div className={classes.paper}>
             <h2 id="transition-modal-title">
               <Form 
+                  handleClose = {handleClose}
                   type = {props.type} 
                   signUp={props.signUp}
                   signIn={props.signIn}

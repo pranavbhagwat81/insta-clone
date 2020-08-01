@@ -6,7 +6,7 @@ import {db} from '../firebase';
 import { Button } from '@material-ui/core';
 import firebase from 'firebase';
 
-function Post({postId,username,user,imgUrl,caption}) {
+function Post({postId,username,user,imgUrl,caption,signedIn}) {
 
     const [comments, setComments] = useState([])
     const [comment, setComment] = useState('')
@@ -42,9 +42,6 @@ function Post({postId,username,user,imgUrl,caption}) {
         setComment('')
     }
 
-    const consoleComments =()=>{
-        console.log(comments)
-    }
 
     return (
         <div className='post'>
@@ -68,26 +65,35 @@ function Post({postId,username,user,imgUrl,caption}) {
             </div>
             <div className='get__comments'>
                {
-                    comments.map((comment,index)=>{
+                     comments.map((comment,index)=>{
                         console.log(comment);
                         if(comment?.username){
                             return <p key={index}><strong>{comment.username}</strong>  {comment.text}</p>
+                        }else{
+                            return false;
                         }
                         
                     })
                }
             </div>
-            <div className='post__comments'>
-                <input
-                className='post__input'
-                type="text"
-                placeholder='Add a comment...'
-                value = {comment}
-                onChange = {(e)=>{setComment(e.target.value)}}
-                >
-                </input>
-                <Button className='post__btn' onClick={(event)=>{postComment(event)}}>Post</Button>
-            </div>
+            {
+            (signedIn)?(
+                    <div className='post__comments'>
+                        
+                        <input
+                        className='post__input'
+                        type="text"
+                        placeholder='Add a comment...'
+                        value = {comment}
+                        onChange = {(e)=>{setComment(e.target.value)}}
+                        ></input>
+                        <Button className='post__btn' onClick={(event)=>{postComment(event)}}>Post</Button>  
+
+
+                    </div>
+                ):
+                 (false) 
+            }
             
         </div>
     )

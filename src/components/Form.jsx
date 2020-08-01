@@ -16,6 +16,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Form(props) {
   const classes = useStyles();
+
+    
+
      return(
         <form className={`${classes.root}`} noValidate autoComplete="off">
             <div className='app__signup__modal'>
@@ -33,7 +36,7 @@ export default function Form(props) {
                 {
                   (props.type==='SIGN UP')?
                   (
-                    <Button onClick={props.signUp} type='submit'>{props.type}</Button>
+                    <Button onClick={(event)=>{props.handleClose();props.signUp(event)}} type='submit'>{props.type}</Button>
                     )
                     :
                     (
