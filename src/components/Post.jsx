@@ -5,6 +5,7 @@ import { useState,useEffect } from 'react';
 import {db} from '../firebase';
 import { Button } from '@material-ui/core';
 import firebase from 'firebase';
+import '../index.css'
 
 function Post({postId,username,user,imgUrl,caption,signedIn}) {
 
@@ -63,12 +64,12 @@ function Post({postId,username,user,imgUrl,caption,signedIn}) {
                     {caption}
                 </h4>
             </div>
-            <div className='get__comments'>
+            <div className='post__comments'>
                {
                      comments.map((comment,index)=>{
                         console.log(comment);
                         if(comment?.username){
-                            return <p key={index}><strong>{comment.username}</strong>  {comment.text}</p>
+                            return <p className='post__comment' key={index}><strong>{comment.username}</strong>  {comment.text}</p>
                         }else{
                             return false;
                         }
@@ -78,7 +79,7 @@ function Post({postId,username,user,imgUrl,caption,signedIn}) {
             </div>
             {
             (signedIn)?(
-                    <div className='post__comments'>
+                    <div className='send__comments'>
                         
                         <input
                         className='post__input'
@@ -87,7 +88,7 @@ function Post({postId,username,user,imgUrl,caption,signedIn}) {
                         value = {comment}
                         onChange = {(e)=>{setComment(e.target.value)}}
                         ></input>
-                        <Button className='post__btn' onClick={(event)=>{postComment(event)}}>Post</Button>  
+                        <Button  className='post__btn' onClick={(event)=>{postComment(event)}}>Post</Button>  
 
 
                     </div>

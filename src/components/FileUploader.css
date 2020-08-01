@@ -9,3 +9,7 @@
 .progress__bar{
     width:100%
 }
+
+.file__caption{
+    background-color: black;
+}

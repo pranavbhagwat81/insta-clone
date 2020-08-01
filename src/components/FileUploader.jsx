@@ -57,7 +57,7 @@ function FileUploader({username}) {
     return (
         <div className = 'file__upload'>   
             <progress className='progress__bar' value={progress} max='100'></progress>         
-            <input 
+            <input className='file__caption' 
                 type='text'
                 placeholder='Enter caption'
                 onChange={(e)=>{setCaption(e.target.value)}}
@@ -65,9 +65,10 @@ function FileUploader({username}) {
             ></input>
             <input 
                 type='file' 
+                className='file__chooser'
                 onChange={(e)=>{handleFileChange(e)}}
             ></input>
-            <Button onClick={handleUpload}>Upload</Button>
+            <Button className='upload__btn' onClick={handleUpload}>Upload</Button>
         </div>
     )
 }

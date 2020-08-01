@@ -1,25 +1,28 @@
 .app__body{
     flex-direction: column;
     padding-top: 20px;
-    background-color: #e6ebe7;
+    background-color: 	#282828;
     height: 100%;
     padding-bottom:130px;
 }
 
 .app__header{
+    height:60px;
     position:sticky;
     top:0px;
     z-index:100;
     display: flex;
     align-items: center;
-    background-color: white;
+    background-color: black;
     object-fit: contain;
     position: sticky 0px;
-    border-bottom:1px lightgrey solid;
+    border-bottom:0.5px lightgrey solid;
 }
 
 .app__header__logo{
     padding: 10px;
+    height: 100%;
+    width: 100px;
 }
 
 .app__posts{
@@ -29,11 +32,11 @@
 }
 
 .post{
-    border:solid lightgrey 2px;
+    border:solid grey 1px;
     margin: 0px 10px;
-    background-color: white;
+    background-color: #101010;
     margin-bottom: 15px;
-    max-width:500px;
+    max-width:400px;
     border-radius: 2%;
 }
 
@@ -41,6 +44,7 @@
     display: flex;
     align-items: center;
     padding-top:5px;
+    color:white
 }
 
 .post__image{
@@ -51,26 +55,44 @@
 .post__footer{
     padding:10px;
     text-align: center;
+    color:white;
 }
 
 .app__signup__modal{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 
 .signout__btn{
-
+    color:white !important;
 }
 
 .post__comments{
     display: flex;
+    flex-direction: column;
     border-top: 1px solid lightgray;
+    color:white;
     
+}
+
+.send__comments{
+    display:flex;
+    color:white;
 }
 
 .post__input{
     flex:1;
+    background-color: black;
+    color: white;
+    background-color: black;
+}
+
+.post__btn{
+    flex:0;
+    color:white !important;
 }
 
 .file__uploader{
@@ -79,10 +101,38 @@
     bottom: 0;
     width: 100%;
     text-align: center;
-    background-color: lightgray;
+    background-color: #282828;
+}
+
+.upload__btn{
+    color:white !important;
+}
+
+.signin_signout__btn{
+    color: white !important;
+}
+
+.file__chooser{
+    background-color: black;
 }
 
 
-.post__btn{
-    flex:0;
+.post__comment{
+    margin-left: 10px;
 }
+
+.loader{
+    display: flex;
+    padding-top: 50vh;
+    justify-content: center;
+    align-items: center
+}
+
+.signup_form_btn{
+    color: white !important;
+}
+
+.signup_form_btn{
+    color: white !important;
+}
+

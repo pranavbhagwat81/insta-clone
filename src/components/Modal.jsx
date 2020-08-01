@@ -37,7 +37,7 @@ export default function TransitionsModal(props) {
 
   return (
     <div>
-      <Button type="button" onClick={handleOpen}>
+      <Button className = 'signin_signout__btn'type="button" onClick={handleOpen}>
         {props.type}
       </Button>
       <Modal

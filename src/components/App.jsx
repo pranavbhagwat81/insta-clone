@@ -6,6 +6,7 @@ import {useState,useEffect} from 'react'
 import { db,auth } from '../firebase'
 import FileUploader from './FileUploader'
 import '../index.css'
+import { CircularProgress } from '@material-ui/core'
 
 function App() {
 
@@ -72,9 +73,13 @@ function App() {
         })
     }
 
-
-    return (
-        <div className='app'>
+    if(posts.lenght === 0){
+        return (
+            <CircularProgress className='loader'/> 
+        )
+    }else{
+        return (
+            <div className='app'>
             <div className = 'app__header'>
                 <Header
                     userSignedInStatus = {signedIn}
@@ -119,13 +124,13 @@ function App() {
                         username = { user?.displayName}
                         />      
                    ) : (
-                       <h3>Login to get upload features...</h3>
+                       false
                    )
                }
             </div>
         </div>
-
-    )
+        )
+    }
 }
 
 export default App
